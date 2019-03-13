@@ -17,23 +17,13 @@ module.exports = (randomBytes) => {
   }
 
   async function hashAndSign (key, msg) {
-    const digest = await new Promise((resolve, reject) => {
-      multihashing.digest(msg, HASH_ALGORITHM, (err, digest) => {
-        if (err) return reject(err)
-        resolve(digest)
-      })
-    })
+    const digest = await multihashing.digest(msg, HASH_ALGORITHM)
     const sig = secp256k1.sign(digest, key)
     return secp256k1.signatureExport(sig.signature)
   }
 
   async function hashAndVerify (key, sig, msg) {
-    const digest = await new Promise((resolve, reject) => {
-      multihashing.digest(msg, HASH_ALGORITHM, (err, digest) => {
-        if (err) return reject(err)
-        resolve(digest)
-      })
-    })
+    const digest = await multihashing.digest(msg, HASH_ALGORITHM)
     sig = secp256k1.signatureImport(sig)
     return secp256k1.verify(digest, sig, key)
   }

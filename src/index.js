@@ -30,13 +30,9 @@ module.exports = (keysProtobuf, randomBytes, crypto) => {
       return this.bytes.equals(key.bytes)
     }
 
-    async hash () {
-      return new Promise((resolve, reject) => {
-        multihashing(this.bytes, 'sha2-256', (err, res) => {
-          if (err) return reject(err)
-          resolve(res)
-        })
-      })
+    // Note: returns a Promise
+    hash () {
+      return multihashing(this.bytes, 'sha2-256')
     }
   }
 
@@ -71,13 +67,9 @@ module.exports = (keysProtobuf, randomBytes, crypto) => {
       return this.bytes.equals(key.bytes)
     }
 
-    async hash () {
-      return new Promise((resolve, reject) => {
-        multihashing(this.bytes, 'sha2-256', (err, res) => {
-          if (err) return reject(err)
-          resolve(res)
-        })
-      })
+    // Note: returns a Promise
+    hash () {
+      return multihashing(this.bytes, 'sha2-256')
     }
   }
 
