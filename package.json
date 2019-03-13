@@ -27,7 +27,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "multihashing-async": "^0.5.1",
+    "multihashing-async": "multiformats/js-multihashing-async#feat/async-iterators",
     "secp256k1": "^3.5.0"
   },
   "devDependencies": {
